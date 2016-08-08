@@ -6,6 +6,7 @@ var open = require('gulp-open'); // open a url in a web broser)
 var browserify = require('browserify'); // bundles js
 var reactify = require('reactify');  // transform react jsx to js
 var source = require('vinyl-source-stream');  // user conventional text streams for gulp
+var concat = require('gulp-concat');
 
 var config = {
   port: 9005,
@@ -14,7 +15,11 @@ var config = {
     html: './src/*.html',
     js: './src/**/*.js',
     mainJs: './src/main.js',
-    dist: './dist'
+    dist: './dist',
+    css: [
+      'node_modules/bootstrap/dist/css/bootstrap.min.css',
+      'node_modules/bootstrap/dist/css/bootstrap-theme.min.css'
+    ]
   }
 }
 
@@ -42,6 +47,13 @@ gulp.task('html', function(){
 gulp.task('watch', function(){
   gulp.watch(config.paths.html, ['html']);
   gulp.watch(config.paths.js, ['js']);
+  gulp.watch(config.paths.css, ['css']);
+})
+
+gulp.task('css', function(){
+  gulp.src(config.paths.css)
+      .pipe(concat('bundle.css'))
+      .pipe(gulp.dest(config.paths.dist + '/css')); 
 })
 
 gulp.task('js', function() {
@@ -54,4 +66,4 @@ gulp.task('js', function() {
       .pipe(connect.reload());
 })
 
-gulp.task('default', ['html', 'open', 'watch', 'js'], function(){});
+gulp.task('default', ['html', 'open', 'watch', 'js', 'css'], function(){});
