@@ -30889,6 +30889,31 @@ module.exports = About;
 
 var React = require('react');
 
+var Header = React.createClass({displayName: "Header",
+  render: function() {
+    return(
+      React.createElement("nav", {className: "navbar navbar-default"}, 
+        React.createElement("div", {className: "container-fluid"}, 
+          React.createElement("a", {href: "/", className: "navbar-brand"}, 
+            React.createElement("img", {src: "images/google-logo.jpg", width: "98"})
+          ), 
+          React.createElement("ul", {className: "nav navbar-nav"}, 
+            React.createElement("li", null, React.createElement("a", {href: "/#"}, "Home")), 
+            React.createElement("li", null, React.createElement("a", {href: "/#about"}, "About"))
+          )
+        )
+      )
+    )
+  }
+});
+
+module.exports = Header;
+
+},{"react":175}],178:[function(require,module,exports){
+"use strict";
+
+var React = require('react');
+
 var Home = React.createClass({displayName: "Home",
   render: function() {
     return (
@@ -30902,12 +30927,13 @@ var Home = React.createClass({displayName: "Home",
 
 module.exports = Home;
 
-},{"react":175}],178:[function(require,module,exports){
+},{"react":175}],179:[function(require,module,exports){
 $ = Jquery = require('jquery');
 var React = require('react');
 var ReactDOM = require('react-dom');
 var Home = require('./components/homePage');
 var About = require('./components/about/aboutPage');
+var Header = require('./components/common/header');
 
 (function(win) {
   'use strict';
@@ -30922,7 +30948,7 @@ var About = require('./components/about/aboutPage');
           Child = Home;
       }
 
-      return(React.createElement("div", null, React.createElement(Child, null)));
+      return(React.createElement("div", null, React.createElement(Header, null), React.createElement(Child, null)));
     }
   })
 
@@ -30935,4 +30961,4 @@ var About = require('./components/about/aboutPage');
   render();
 }(window));
 
-},{"./components/about/aboutPage":176,"./components/homePage":177,"jquery":2,"react":175,"react-dom":3}]},{},[178]);
+},{"./components/about/aboutPage":176,"./components/common/header":177,"./components/homePage":178,"jquery":2,"react":175,"react-dom":3}]},{},[179]);

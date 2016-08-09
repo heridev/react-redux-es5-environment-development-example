@@ -3,6 +3,7 @@ var React = require('react');
 var ReactDOM = require('react-dom');
 var Home = require('./components/homePage');
 var About = require('./components/about/aboutPage');
+var Header = require('./components/common/header');
 
 (function(win) {
   'use strict';
@@ -17,7 +18,7 @@ var About = require('./components/about/aboutPage');
           Child = Home;
       }
 
-      return(<div><Child /></div>);
+      return(<div><Header /><Child /></div>);
     }
   })
 
