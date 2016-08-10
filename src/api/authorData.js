@@ -7,13 +7,13 @@ module.exports = {
       lastName: 'House'
     },
     {
-      id: 'scott-allen',
+      id: 'scott-alleddd',
       firstName: 'scto',
       lastName: 'allen',
     },
     {
       id: 'scott-allen',
-      firstName: 'scto',
+      firstName: 'sctodd',
       lastName: 'allen',
     }
   ]

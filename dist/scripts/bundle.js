@@ -47534,13 +47534,13 @@ module.exports = {
       lastName: 'House'
     },
     {
-      id: 'scott-allen',
+      id: 'scott-alleddd',
       firstName: 'scto',
       lastName: 'allen',
     },
     {
       id: 'scott-allen',
-      firstName: 'scto',
+      firstName: 'sctodd',
       lastName: 'allen',
     }
   ]
@@ -47576,11 +47576,15 @@ var React = require('react');
 
 var AuthorList = React.createClass({displayName: "AuthorList",
 
+  propTypes: {
+    authors: React.PropTypes.array.isRequired
+  },
+
   createAuthorRow: function(author) {
     return(
       React.createElement("tr", {key: author.id}, 
-      React.createElement("td", null, React.createElement("a", {href: "/#authors/" + author.id}, author.id)), 
-      React.createElement("td", null,  author.firstName, " ",  author.lastName)
+        React.createElement("td", null, React.createElement("a", {href: "/#authors/" + author.id}, author.id)), 
+        React.createElement("td", null,  author.firstName, " ",  author.lastName)
       )
     );
   },
@@ -47590,8 +47594,10 @@ var AuthorList = React.createClass({displayName: "AuthorList",
       React.createElement("div", null, 
         React.createElement("table", {className: "table"}, 
           React.createElement("thead", null, 
-            React.createElement("th", null, "ID"), 
-            React.createElement("th", null, "Name")
+            React.createElement("tr", null, 
+              React.createElement("th", null, "ID"), 
+              React.createElement("th", null, "Name")
+            )
           ), 
           React.createElement("tbody", null, 
             this.props.authors.map(this.createAuthorRow, this)
@@ -47611,7 +47617,7 @@ var React = require('react');
 var AuthorApi = require('../../api/authorApi');
 var AuthorList = require('./authorList');
 
-var Authors = React.createClass({displayName: "Authors",
+var AuthoPage = React.createClass({displayName: "AuthoPage",
   getInitialState: function() {
     return {
       authors: []
@@ -47634,7 +47640,7 @@ var Authors = React.createClass({displayName: "Authors",
   }
 });
 
-module.exports = Authors;
+module.exports = AuthoPage;
 
 },{"../../api/authorApi":177,"./authorList":180,"react":176}],182:[function(require,module,exports){
 "use strict";
